@@ -1,0 +1,39 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+dist/
+*.egg-info/
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate*
+terraform/tfplan
+
+# Build artifacts
+layer/
+layer.zip
+lambda_function.zip
+*.log
+
+# Local development
+audios/*.wav
+output/*.mp3
+downloads/
+aws_backups/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

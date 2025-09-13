@@ -1,0 +1,65 @@
+{
+  "tests": [
+    {
+      "name": "Full message test",
+      "description": "Test stitching 'hello shreeshail' which should find both audio files",
+      "request": {
+        "message": "hello shreeshail",
+        "audios": "audio-stitcher-audio-dev-5d2a5002", 
+        "output": "output/hello_shreeshail.mp3"
+      },
+      "expected": {
+        "success": true,
+        "should_have_audio_data": true,
+        "expected_files": ["hello", "shreeshail"]
+      }
+    },
+    {
+      "name": "Single word test", 
+      "description": "Test stitching 'hello' which should find one audio file",
+      "request": {
+        "message": "hello",
+        "audios": "audio-stitcher-audio-dev-5d2a5002",
+        "output": "output/hello_only.mp3"
+      },
+      "expected": {
+        "success": true,
+        "should_have_audio_data": true,
+        "expected_files": ["hello"]
+      }
+    },
+    {
+      "name": "Another single word test",
+      "description": "Test stitching 'shreeshail' which should find one audio file", 
+      "request": {
+        "message": "shreeshail",
+        "audios": "audio-stitcher-audio-dev-5d2a5002",
+        "output": "output/shreeshail_only.mp3"
+      },
+      "expected": {
+        "success": true,
+        "should_have_audio_data": true,
+        "expected_files": ["shreeshail"]
+      }
+    },
+    {
+      "name": "No matching files test",
+      "description": "Test with a message that has no matching audio files",
+      "request": {
+        "message": "goodbye world",
+        "audios": "audio-stitcher-audio-dev-5d2a5002",
+        "output": "output/no_match.mp3"
+      },
+      "expected": {
+        "success": false,
+        "should_have_audio_data": false,
+        "expected_files": []
+      }
+    }
+  ],
+  "config": {
+    "bucket_placeholder": "audio-stitcher-audio-dev-5d2a5002",
+    "available_audio_files": ["hello.wav", "shreeshail.wav"],
+    "notes": "Update bucket name with actual bucket from terraform output"
+  }
+}
