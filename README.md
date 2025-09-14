@@ -25,7 +25,7 @@ Test code : -
 
 manual testing  script:-
 
-put files to stich in /audios folder then run ./test-and-download.sh instead of curl so as to downlaod the stitched file as well 
+put files to stich in /audios folder then run ./curl-script-to-post.sh instead of curl so as to downlaod the stitched file as well 
 check stiched file created in s3: -
 LATEST=$(aws s3 ls s3://$BUCKET_NAME/output/ --recursive | sort | tail -n 1 | awk '{print $4}')
 aws s3 cp s3://$BUCKET_NAME/$LATEST ./latest_result.mp3
