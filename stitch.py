@@ -75,7 +75,7 @@ class BucketRepo(Repo):
         self.__bucket_name = audios  # assuming audios is the bucket name
         self.__output_key = output   # output key in S3
         
-        log.debug(f'enumerating S3 objects...')
+        log.debug(f'enumerating S3 objects in bucket {self.__bucket_name}')
         self.__files = [f for f in self.load_files_from_s3()]
         log.debug(f'found {len(self.__files)} audio files in S3 bucket {audios}')
         super().__init__(audios=audios, output=output, files=self.__files, log=log)
