@@ -120,7 +120,6 @@ resource "aws_api_gateway_integration" "lambda_integration" {
 
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.audio_api.id
-  stage_name  = var.environment
 
   depends_on = [
     aws_api_gateway_method.stitch_post,
@@ -130,6 +129,12 @@ resource "aws_api_gateway_deployment" "api_deployment" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_api_gateway_stage" "api_stage" {
+  rest_api_id   = aws_api_gateway_rest_api.audio_api.id
+  deployment_id = aws_api_gateway_deployment.api_deployment.id
+  stage_name    = var.environment
 }
 
 # Lambda permission for API Gateway
