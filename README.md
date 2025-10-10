@@ -19,6 +19,15 @@ Save them to `./audios` and execute:
 bash run.sh
 
 One-Command Deployment:
+
+create virtual env : - 
+pyvenv .venv
+
+finding created venv : - 
+switch to wsl
+find . -name "pyvenv.cfg" -o -name "activate"
+source ./.venv/bin/activate
+
 ./deploy.sh --region us-east-1 --environment dev
 
 Test code : - 
